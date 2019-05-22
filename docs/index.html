@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NOAA Satellite Course: Introduction to ERDDAP</title>
+  <meta name="description" content="A introduction to using the ERDDAP data server.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="NOAA Satellite Course: Introduction to ERDDAP" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://coastwatch.pfeg.noaa.gov/" />
+  
+  <meta property="og:description" content="A introduction to using the ERDDAP data server." />
+  <meta name="github-repo" content="dhr-sc" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="NOAA Satellite Course: Introduction to ERDDAP" />
+  
+  <meta name="twitter:description" content="A introduction to using the ERDDAP data server." />
+  
+
+<meta name="author" content="Cara Wilson and Dale Robinson">
+
+
+<meta name="date" content="2019-05-16">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="introduction.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">CoastWatch ERDDAP Introduction</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#noaa-coastwatchoceanwatch-program"><i class="fa fa-check"></i>NOAA CoastWatch/OceanWatch Program</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#coastwatch-west-coast-regional-node"><i class="fa fa-check"></i>CoastWatch West Coast Regional Node</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-erddap"><i class="fa fa-check"></i><b>1.1</b> What is ERDDAP</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#list-of-erddap-servers"><i class="fa fa-check"></i><b>1.2</b> List of ERDDAP servers</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="catalog.html"><a href="catalog.html"><i class="fa fa-check"></i><b>2</b> Exploring the data catalog</a><ul>
+<li class="chapter" data-level="2.1" data-path="catalog.html"><a href="catalog.html#finding-datasets-on-erddap"><i class="fa fa-check"></i><b>2.1</b> Finding datasets on ERDDAP</a></li>
+<li class="chapter" data-level="2.2" data-path="catalog.html"><a href="catalog.html#gather-information-about-a-dataset"><i class="fa fa-check"></i><b>2.2</b> Gather information about a dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visualize.html"><a href="visualize.html"><i class="fa fa-check"></i><b>3</b> Visualization and download data</a><ul>
+<li class="chapter" data-level="3.1" data-path="visualize.html"><a href="visualize.html#errdap-make-a-graph-feature"><i class="fa fa-check"></i><b>3.1</b> ERRDAP “Make A Graph” feature</a></li>
+<li class="chapter" data-level="3.2" data-path="visualize.html"><a href="visualize.html#subsetting-the-area-and-selecting-a-date"><i class="fa fa-check"></i><b>3.2</b> Subsetting the area and selecting a date</a></li>
+<li class="chapter" data-level="3.3" data-path="visualize.html"><a href="visualize.html#setting-the-file-format"><i class="fa fa-check"></i><b>3.3</b> Setting the file format</a></li>
+<li class="chapter" data-level="3.4" data-path="visualize.html"><a href="visualize.html#download-the-image"><i class="fa fa-check"></i><b>3.4</b> Download the image</a></li>
+<li class="chapter" data-level="3.5" data-path="visualize.html"><a href="visualize.html#refining-the-data-request"><i class="fa fa-check"></i><b>3.5</b> Refining the data request</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="erddapurl.html"><a href="erddapurl.html"><i class="fa fa-check"></i><b>4</b> Automating ERDDAP requests</a><ul>
+<li class="chapter" data-level="4.1" data-path="erddapurl.html"><a href="erddapurl.html#deconstructing-the-url"><i class="fa fa-check"></i><b>4.1</b> Deconstructing the URL</a></li>
+<li class="chapter" data-level="4.2" data-path="erddapurl.html"><a href="erddapurl.html#adjust-the-area-in-the-url"><i class="fa fa-check"></i><b>4.2</b> Adjust the area in the URL</a></li>
+<li class="chapter" data-level="4.3" data-path="erddapurl.html"><a href="erddapurl.html#adjust-the-time-in-the-url"><i class="fa fa-check"></i><b>4.3</b> Adjust the time in the URL</a></li>
+<li class="chapter" data-level="4.4" data-path="erddapurl.html"><a href="erddapurl.html#changing-the-file-type-in-the-url"><i class="fa fa-check"></i><b>4.4</b> Changing the file type in the URL</a></li>
+<li class="chapter" data-level="4.5" data-path="erddapurl.html"><a href="erddapurl.html#pull-data-into-a-scripting-language"><i class="fa fa-check"></i><b>4.5</b> Pull data into a scripting language</a></li>
+<li class="chapter" data-level="4.6" data-path="erddapurl.html"><a href="erddapurl.html#additional-training-and-resources"><i class="fa fa-check"></i><b>4.6</b> Additional training and resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://coastwatch.pfeg.noaa.gov" target="blank">Created by CoastWatch West Coast</a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NOAA Satellite Course: Introduction to ERDDAP</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">NOAA Satellite Course: Introduction to ERDDAP</h1>
+<p class="author"><em>Cara Wilson and Dale Robinson</em></p>
+<p class="date"><em>16 May 2019</em></p>
+</div>
+<div id="preface" class="section level1 unnumbered">
+<h1>Preface</h1>
+<p>These exercises are materials for the NOAA Satellite Training Course offered each year by regional nodes of NOAA’s CoastWatch program. They demonstrate the features of the ERDDAP data servers and hands-on training on how to use the feature. Participants will subset and download data, create mapped images, visualize wind vector fields, and generate timeseries and Hovmöller diagrams.</p>
+<p>Suggested software includes a text editor like Notepad or TextEdit and the netCDF file viewer Panoply (www.giss.nasa.gov/tools/panoply/).</p>
+<p>Additional course materials are available at these locations:</p>
+<ul>
+<li>ERDDAP tutorial (coastwatch.pfeg.noaa.gov/projects/nb/)</li>
+<li>R tutorials (coastwatch.pfeg.noaa.gov/projects/r/),</li>
+<li>R notebooks (github.com/dhr-sc/text_book</li>
+</ul>
+<div id="noaa-coastwatchoceanwatch-program" class="section level2 unnumbered">
+<h2>NOAA CoastWatch/OceanWatch Program</h2>
+<p>NOAA CoastWatch/OceanWatch provides easy access for everyone to global and regional satellite data products for use in understanding, managing and protecting ocean and coastal resources and for assessing impacts of environmental change in ecosystems, weather, and climate.</p>
+<p><img src="images/cw_logo_80.png" /> <span style="color:blue;font-size:30px;"><a href="https://coastwatch.noaa.gov/">CoastWatch</a></span></p>
+</div>
+<div id="coastwatch-west-coast-regional-node" class="section level2 unnumbered">
+<h2>CoastWatch West Coast Regional Node</h2>
+<p>These course materials were developed and are distributed by the <a href="https://coastwatch.pfeg.noaa.gov/">West Coast Node</a> of NOAA CoastWatch. Information about the courses and services offered by West Coast Node can be found at the following links:</p>
+<button>
+<a href="https://coastwatch.pfeg.noaa.gov/courses/satellite_course.html">Courses</a>
+</button>
+       
+<button>
+<a href="https://coastwatch.pfeg.noaa.gov/data.html">Data Catalog</a>
+</button>
+       
+<button>
+<a href="https://coastwatch.pfeg.noaa.gov/erddapinfo/index.html">Data Server</a>
+</button>
+       
+<button>
+<a href="https://coastwatch.pfeg.noaa.gov/xtracto/">Xtractomatic</a>
+</button>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

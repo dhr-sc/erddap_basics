@@ -1,0 +1,46 @@
+--- 
+title: "NOAA Satellite Course: Introduction to ERDDAP"
+author: "Cara Wilson and Dale Robinson"
+#date: "`r Sys.Date()`"
+date: "16 May 2019"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: dhr-sc
+url: 'http\://coastwatch.pfeg.noaa.gov/'
+description: "A introduction to using the ERDDAP data server."
+
+---
+
+# Preface{-}  
+These exercises are materials for the NOAA Satellite Training Course offered each year by regional nodes of NOAA's CoastWatch program. They demonstrate the features of the ERDDAP data servers and hands-on training on how to use the feature. Participants will subset and download data, create mapped images, visualize wind vector fields, and generate timeseries and Hovmöller diagrams.  
+
+Suggested software includes a text editor like Notepad or TextEdit and the netCDF file viewer Panoply (www.giss.nasa.gov/tools/panoply/). 
+
+Additional course materials are available at these locations:  
+
+* ERDDAP tutorial (coastwatch.pfeg.noaa.gov/projects/nb/)
+* R tutorials (coastwatch.pfeg.noaa.gov/projects/r/), 
+* R notebooks (github.com/dhr-sc/text_book
+
+## NOAA CoastWatch/OceanWatch Program{-}  
+
+NOAA CoastWatch/OceanWatch provides easy access for everyone to global and regional satellite data products for use in understanding, managing and protecting ocean and coastal resources and for assessing impacts of environmental change in ecosystems, weather, and climate.  
+
+![](images/cw_logo_80.png)  <span style="color:blue;font-size:30px;">[CoastWatch](https://coastwatch.noaa.gov/)</span>
+
+
+##CoastWatch West Coast Regional Node{-}  
+
+These course materials were developed and are distributed by the [West Coast Node](https://coastwatch.pfeg.noaa.gov/) of NOAA CoastWatch. Information about the courses and services offered by West Coast Node can be found at the following links:  
+
+<button>[Courses](https://coastwatch.pfeg.noaa.gov/courses/satellite_course.html)</button> \ \ \ \ \ \ \ 
+<button>[Data Catalog](https://coastwatch.pfeg.noaa.gov/data.html)</button> \ \ \ \ \ \ \ 
+<button>[Data Server](https://coastwatch.pfeg.noaa.gov/erddapinfo/index.html)</button> \ \ \ \ \ \ \ 
+<button>[Xtractomatic](https://coastwatch.pfeg.noaa.gov/xtracto/)</button>
+
+
+
+
