@@ -1,0 +1,64 @@
+--- 
+title: "ERDDAP Basics"
+author: "Dale Robinson, CoastWatch"
+date: "`r Sys.Date()`"
+output: pdf_document
+description: This is a minimal example of using the bookdown package to write a book.
+  The output format for this example is bookdown::gitbook.
+documentclass: book
+link-citations: yes
+bibliography:
+- book.bib
+- packages.bib
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+
+
+
+```{r}
+
+```
+# Data catalog
+
+## Search the data holdings 
+
+Open a browser and enter the following URL: `https://coastwatch.pfeg.noaa.gov/erddap/`.  
+
+* Just for fun, click `"View a List of All 1,429 Datasets"`  
+You will see all 1400+ datasets listed on the page. You don't have to look through them all. There is a search feature to help find datasets on interests.  
+* Go back to the landing page (`https://coastwatch.pfeg.noaa.gov/erddap/`)  
+* To narrow down the choices, type `"sst"` in the search box and click the `"Search"` button.
+* Now add `"global"` to the search box [i.e. `sst and global`] and click the `"Search"` button to futher narrow the search.
+
+## Gather information about a dataset
+
+For this example we will use the OSTIA SST dataset.  
+
+Add `"ostia"` in the search box (e.g. `sst global ostia`) and click the `"Search"` button.  The listing (pictured below) gives access to a lot of information about the dataset. Several datasets will be listed. We will work with the listing title:  
+`Global SST & Sea Ice Analysis, L4 OSTIA, UK Met Office, Global, 0.05°, Daily, 2013-present`
+
+![Figure. OSTIA search result](ostia_listing.png)
+
+In the browser, try the following:  
+
+* In the 9th column lableled `"Summary"`, mouse over the question mark `?` to get an overview of the dataset.  
+* Now click `"background"` to get more complete information from the data provider about the dataset. Use the browser back button to return to the search results page. 
+* Click the `"M"` under `"FGDC,ISO,Metadata"` to see all of the dataset metadata. A lot of information is displayed. Some important fields are:
+    +  For the spatial coverage: `"geospatial_lat_min"`, `"geospatial_lat_max"`, `"geospatial_lon_min"`, and `"geospatial_lon_max"`
+    +  For the size of each pixel: `"geospatial_lat_resolution"` and `"geospatial_lon_resolution"`
+    +  For the temporal coverage: `"time_coverage_start"` and `"time_coverage_end"`
+    +  For citing the dataset in publications: `"references"`
+    +  For the restrictions on using the data`"license"`
+
+When you are finished exploring the metadata, use the browser back button to go back to the search results page. 
+    
+
+
+
+
+```{r, nice-fig3, echo=FALSE}
+htmltools::img(src = knitr::image_uri("cw_logo_notext.png"), 
+               alt = 'logo', 
+               style = 'position:absolute; top:0; right:0; padding:10px; width:100px')
+```

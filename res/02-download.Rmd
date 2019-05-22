@@ -1,0 +1,65 @@
+# Downloading Data {#download}
+
+In Chapter 2 we picked the dataset we want to use and fine-tuned the area of interest. To set the time period we are intested in, we need to go to the `Data Access Form`
+
+To start, bring up the `Make A Graph` map we made in Chapter 2. The link is below if you do not have it in your browser.  
+`https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplUKMO_OSTIAv20.graph?analysed_sst[(2015-07-17T12:00:00Z)][(45.025):(52.025)][(-128.975):(-121.975)]&.draw=surface&.vars=longitude%7Clatitude%7Canalysed_sst&.colorBar=KT_thermal%7C%7C%7C12%7C20%7C&.bgColor=0xffccccff`
+
+Near the top of the `Make A Graph` page at the end of the line marked `Information`, click the `Data Access Form` link. The `Data Access Form` for the map you made on `Make A Graph` will load. The latitude, longitude, and variable information you selected in `Make A Graph` will now populate the `Data Access Form` page as it loads.
+
+## Data Access Form
+
+![OSTIA SST Data Form](data_form.png)
+
+Note the following:
+
+The time widget now has a start and stop date, so you can pick a range of dates to download.
+
+The time, latitude, and longitude widgets all have a "Stride" associated with them. The stride gives you additional control over subsetting by reducing the data density. For example:
+
+* If you wanted to get every other day, the stride would be "2". A stride of "3" would get every third day.
+* Similarly, a stride of "5" in the latitude (or longitude) widgets would sample the data every fifth latitude value.  
+* The stride value is helpful when you do not need as high a resolution as found in the dataset. 
+
+## Setting the time range
+
+* Find the `"time"` widget. Use it to adjust the time range to the following one (1) month period: 
+    * `Start: 2015-06-17T12:00:00Z`
+    * `Stop: 2015-07-17T12:00:00Z`  
+
+
+* This is a daily dataset, so if we requested every day in the time period we would get about 30 days of data. Let's get the data for just one time per week by setting the step function to 7, resulting in a netCDF file with 4 or 5 days of data. 
+
+## Selecting the variables to include
+
+In the `Grid Variables` section you can request that additional variables be added to the download. The `analysed_sst` variable you selected has been preselected. If you want, you could include any of the other three variables. 
+
+In this example the addition variables are "analysis_error", "sea_ice_fraction", and "mask". In the polar regions, for example, `sea_ice_fraction` might be an important variable to include. 
+
+* Check the box next to a variable to include it in the download file
+
+## Selecting the file type
+
+You can request the data in many formats. We use the netCDF format for NOAA statellite courses and for many examples in this tutorial so select the format now.
+
+* Find the `"File type"` dropdown and select `"nc"`, which is the alias for netCDF. 
+
+## Download the file
+
+You can download the data directly to your computer by clicking `"Submit"` button. Alternatively, you can generate and copy the URL that defines your data request. Put the URL in any browser to download the data. You can even send the URL to a colleague and they can download the data. More importantly, you can use the URL to import the data directly into analysis programs like R, Python, or Matlab. 
+
+For now let's get the URL and put it in a browser.
+
+* Find the button labeled `"Just get the URL"` and click on it.
+* In the box to the right an URL will appear. Copy the URL.
+* Open a new tab on your browser, paste the URL in the address box, and hit return. The file should start to download. 
+
+## View the netCDF file using Panoply
+
+Hopefully you were able to install the NASA netCDF viewer, Panoply. If so, try to load into Panoply the netCDF file you just downloaded.
+
+```{r, nice-fig2, echo=FALSE}
+htmltools::img(src = knitr::image_uri("cw_logo_notext.png"), 
+               alt = 'logo', 
+               style = 'position:absolute; top:0; right:0; padding:10px; width:100px')
+```
