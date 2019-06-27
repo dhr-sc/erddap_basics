@@ -149,7 +149,8 @@ For now let’s get the URL and put it in a browser.
 
 Hopefully you were able to install the NASA netCDF viewer, Panoply. If so, try to load into Panoply the netCDF file you just downloaded.
 
-
+## Try this on you own  
+Select a dataset and create a surface map of an area of the world that interests you. 
 
 ```{r, nice-fig2, echo=FALSE}
 htmltools::img(src = knitr::image_uri("images/cw_logo_notext.png"), 

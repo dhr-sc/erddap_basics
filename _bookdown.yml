@@ -2,7 +2,7 @@ book_filename: "CoastWatch_ERDDAP_Intro"
 chapter_name: "Chapter "
 repo: https://github.com/dhr-sc
 output_dir: docs
-# rmd_files: ["index.Rmd", "01-Introduction.Rmd", "02-sanctuary.Rmd", "03-xyt_matchup.Rmd", "04-timeseries_chl.Rmd", "05-sstbuoy.Rmd", "06_turtlewatch_xtracto.Rmd"]
-rmd_files: ["index.Rmd", "01-Introduction.Rmd", "02-Catalog.Rmd", "03-Visualize.Rmd", "04-Erddapurl.Rmd"]
+rmd_files: ["index.Rmd", "01-Introduction.Rmd", "02-Catalog.Rmd", "03-Visualize.Rmd", 
+            "04-Erddapurl.Rmd", "05-Hovmoller.Rmd", "06-Vectors.Rmd", "07-Resources.Rmd"]
 clean: [packages.bib, bookdown.bbl]
 new_session: yes

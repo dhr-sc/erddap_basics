@@ -1,0 +1,107 @@
+---
+title: "ERDDAP data into R Notebook"
+output: html_notebook
+---
+
+Download a ncdf file from erddap.  Generate the url on the erddap and paste it in here between the single quotes
+The code below will download a few years of chl data from the OC-CCI for a region around San Francisco and Monterey Bay.  
+
+```{r}
+test <- download.file('https://coastwatch.pfeg.noaa.gov/erddap/griddap/pmlEsaCCI31OceanColorMonthly.nc?chlor_a[(2008-01-01):1:(2018-06-01T00:00:00Z)][(38.5):1:(36.5)][(-123.5):1:(-121.5)]',destfile='test.nc',mode='wb')
+```
+
+Now read the ncdf file that was downloaded by the request above  
+
+```{r}
+datafileID <- nc_open('test.nc')
+
+chlor_a   <- ncvar_get(datafileID, "chlor_a")
+longitude <- ncvar_get(datafileID, "longitude")
+latitude  <- ncvar_get(datafileID, "latitude")
+datatime  <- ncvar_get(datafileID, "time")
+
+nc_close(datafileID)
+```
+
+Convert the time variable into a seconds since 1970 to a variable recognized as a date by R 
+
+```{r}
+datatime <- as.Date(as.POSIXlt(datatime,origin='1970-01-01',tz= "GMT"))
+```
+
+Average the 2D data into a timeseries of the average chlorophyll value. 
+The c(3) indicates the time dimension will be the one dimension returned    
+
+```{r}
+AvgChl <- apply(chlor_a, c(3),function(x) mean(x,na.rm=TRUE))
+```
+
+Plot the timeseries 
+
+```{r}
+plot(datatime, AvgChl,type='b', pch=20)
+```
+Average the data into a map the average chlorophyll value. 
+The c(1,2) indicates the x and y dimensions will be returned   
+
+```{r}
+AvgChlMap <- apply(chlor_a,c(1,2),function(x) mean(x,na.rm=TRUE))
+```
+
+Make a map of the average chl field using base graphics
+
+```{r}
+image(longitude,latitude,AvgChlMap)
+```
+So let's look at the order of values in longitude and latitude.  
+
+```{r}
+longitude
+```
+```{r}
+latitude
+```
+So latitude is the culprit, having descending values. So we will need to reverse this array and rotate the satellite image as well
+
+```{r}
+
+fliplatitude <- sort(latitude)
+FlipAvgChlMap <- apply(t(AvgChlMap),2,rev)
+image(longitude,fliplatitude,log(FlipAvgChlMap),col=rev(rainbow(12)))
+```
+
+THe map is rather distorrted, and it would be nice to get the coastline and color legend on the map.  A lot of these features are easier to do using ggplot, so lets make a map in ggplot. 
+First need to restructure the data to plot using ggplot, create a function to do this.  
+This function will vectorize the 2D array of satellite data and create vectors of latitude and longitude that are the same length 
+
+```{r}
+MapFrame <- function(longitude,latitude,data){
+dims<-dim(data)
+data<-array(data,dims[1]*dims[2])
+MapFrame<-expand.grid(x=longitude,y=latitude)
+MapFrame$data<-data
+return(MapFrame)
+}
+```
+
+Now restructure the data by passing it through the function defined above. Pass in the log of the Chlorophyll data  
+```{r}
+ChlMap <- MapFrame(longitude,latitude,log(AvgChlMap))
+```
+
+Call the ggplot2 library
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+coast <- map_data("worldHires", ylim = range(latitude), xlim = range(longitude))
+ggplot(data = ChlMap, aes(x = x, y = y, fill = data)) + 
+  geom_raster(interpolate = FALSE,na.rm=T) +
+  coord_fixed(1.3,ylim = range(latitude), xlim = range(longitude)) +
+  geom_polygon(data = coast, aes(x=long, y = lat, group = group), fill = "grey80") +
+  scale_fill_gradientn(colours = rev(rainbow(12))) + 
+  ylab("Latitude") + xlab("Longitude") 
+```
+test <- download.file('http://localhost:8080/erddap/tabledap/BGC_Argo.htmlTable?time%2Clatitude%2Clongitude&time%3E=2012-05-01T00%3A00%3A00Z&time%3C=2012-06-30T00%3A00%3A00Z&latitude%3E=20&latitude%3C=24&longitude%3E=193&longitude%3C=198',destfile='test.nc',mode='wb')

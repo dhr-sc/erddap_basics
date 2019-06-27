@@ -1,0 +1,78 @@
+---
+title: "Tutorial: ERDDAP Exercise: Timeseries & Hovmellers"
+# output: html_notebook
+date: February 28, 2019
+author: Cara Wilson
+#output:
+#  rmarkdown::html_document:
+#  theme: lumen
+output:
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    #use_bookdown: true
+---
+
+
+In this exercise we are going to examine __The Blob__, the name given to a large mass of relatively warm water in the Pacific Ocean off the coast of North America. It was first detected in late 2013 and continued to spread throughout 2014 and 2015. See the wikipedia entry on it. What did it actually look like? 
+
+#  Go to the CoastWatch West Coast ERDDAP server  
+
+
+1. Enter the following URL into your browser: `https://coastwatch.pfeg.noaa.gov/erddap/`  or Google `"ERDDAP west coast"`.  
+2. In the search box type `"MUR SST"` and click the `"Search"` button.  
+3. Click on `"graph"` to the left of the dataset `Multi-scale Ultra-high Resolution (MUR) SST Analysis fv04.1, Global, 0.01°, 2002-present, Monthly`
+4. Narrow the map to the N. Pacific by putting in the following minimum and maximum latitude and longitude values using the latitude and longitude widgets: 
+    * `Latitudes: 20, 60`
+    * `Longitudes: -179, -100`  
+
+Then click `"Redraw the Graph"`. 
+
+![SST map](images/SSTmap1.png)
+
+Do you see “the blob”? No? That’s good, it’s not really evident. Why? What time period are we looking at? The default view is for the most recent data, and the blob was at its peak in early 2014, so change the date to `January 2014`.
+
+![SST map for January 2014](images/SSTmap2.png)
+
+Now do you see the blob? Not really? It's pretty subtle, and you have to know what you are looking for. The  isotherms should be shifted northward in the eastern Pacific compared to the first plot. What's a better way to graphically show it? By looking at the __temperature anomaly__.   
+
+##Mapping the Blob 
+
+To change the dataset either go back to the listing of datasets by clicking on `"griddap"` at the top of the page and then re-entering the time, latitude and longitude selections. Alternatively change the dataset name in the url in your broser from `"jplMURSST41mday"` to `"jplMURSST41anommday"`, so just add `"anom"` to the datset name.  
+
+![SST Anomaly map for January 2014](images/SSTmap3.png)
+
+Now the Blob is clearly visible!  Note how the color bar has changed.  By default anomaly datsets have a color bar that differentiates between negative and positive values.  
+
+
+## Making a timeseries 
+
+How long did the Blob last? To find out let's make a timeseries of data from within the Blob. 
+
+* In the __Graph Type__ widget change the `surface` to `lines and markers`   
+* Enter `2013-01-01` as the Start Time and press the right-facing blue arrow to select the current time 
+* Enter `45` as the latitude
+* Enter `-143` as the longitude
+* Click the `"Redraw the Graph"` button
+    
+![Timeseries at 45N, 143W](images/SSTts.png)    
+
+## Making a Hovmoller plot
+
+ERDDAP can also make Hovmoller plots, which are two-dimensional timeseries, with time on one axes and latitude or longitude on the other. Lets make a section of the Blob against latitude:  
+
+* In the __Graph Type__ widget change `lines and markers` back to `surface`
+* In the __Y axis__ widget change `latitude` to `time`
+* Enter `2013-01-01` as the Start Time 
+* Enter `45` as the latitude
+* Enter `-125` as the maximum longitude
+* Click the `"Redraw the Graph"` button
+
+![Hovmoller along 45N](images/SSThov.png)    
+
+You can see that the blob moved east throughout 2014 and 2015, and then at the end of 2015 expanded across most of the eastern basin. 
+
+What would a hovmoller look like plotted against latitude rather than longitude?  Do this exercise on on you own. 

@@ -1,0 +1,38 @@
+---
+title: "Using plotdap"
+output:
+  html_document:
+    df_print: paged
+---
+
+The R package plotdap makes it easy to visualize ‘tabledap’ and ‘griddap’ objects obtained via the 'rerddap' package. Maps can be made using either base or ggplot2 graphics, and the user does not need to know the intricacies of obtaining continental outlines, projections, and combining those with the data to form maps. Animations of the data are also readily obtained. plotdap works in a similar fashion with either tables or grids return by 'rerddap' further simplifying the mapping process.
+
+
+The mapData argument can be used to change the resolution of the continental outlines or to limit the outline to a pre-selected area, which can speed up processing because fewer unused polygons need to be clipped. This is particularly important for maps that will cross the dateline. 
+
+Here we will make a map of 750 m VIIRS SST off the coast of North America. We will get the most recent image using the "last' function of erddap.
+```{r}
+sstInfo <- rerddap::info('erdVHsstaWS3day')
+# get latest 3-day composite sst
+viirsSST <- rerddap::griddap(sstInfo, 
+                             latitude = c(41., 31.), 
+                             longitude = c(-128., -115), 
+                             time = c('last','last'), 
+                             fields = 'sst')
+```
+
+Next we will get the coastline information for the mapping region.  Be sure to change these 
+latitude and longtide boundaries here if you change them for the SST call above.  
+```{r}
+w <- map("worldHires", xlim = c(-140., -114), ylim = c(30., 42.), 
+         fill = TRUE, plot = FALSE)
+
+```
+
+This will make a map of the data, using the temperature palette defined for temperature by cmocean. 
+
+```{r}
+add_griddap(plotdap(mapData = w), viirsSST, ~sst, fill = "temperature" )
+```
+
+

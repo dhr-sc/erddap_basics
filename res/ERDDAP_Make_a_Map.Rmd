@@ -1,0 +1,80 @@
+---
+title: "Tutorial: ERDDAP Exercise: Make a Map"
+# output: html_notebook
+date: February 27, 2019
+author: Cara Wilson
+#output:
+#  rmarkdown::html_document:
+#  theme: lumen
+output:
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    #use_bookdown: true
+---
+
+
+
+#  Go to the CoastWatch West Coast ERDDAP server  
+
+
+1. Enter the following URL into your browser: `https://coastwatch.pfeg.noaa.gov/erddap/`  or Google `"ERDDAP west coast"`.  
+2. In the search box type `"viirs chl"` and click the `"Search"` button.  
+That narrows the choices down to just VIIRS chlorophyll datasets
+3. Click on `"graph"` to the left of the dataset `Chlorophyll, NOAA VIIRS, Science Quality, Global, Level 3, 2012-present, Monthly`
+
+
+## Temporally subset the dataset
+
+* __"time (UTC)" widget__ - Use it to select the date of interest. By default it is set on the most recent date. There are several ways to select a different date.  
+    * With the slider bar, pulling the slider all the way to the left takes you to the first date entry in the dataset or any date in between. Take the slider and select a date midway on the slider bar. Click `"Redraw the Graph"` to display the new map. 
+    * On the date display (under the "Stop" column), clicking the minus (`"-"`) or plus (`"+"`) takes you one day back or forward. Clicking the solid blue left-pointing arrow takes you to the first date entry in the dataset. Clicking the solid blue right-pointing arrow takes you to the most recent entry in the dataset. 
+    * For this exercise type the date `"2018-09-15"`, directly into the date display. 
+    
+## Spatially subset the dataset
+* You can use the `"In"`, `"In 2x"` or `"In 8x"` buttons next to __Zoom__ to zoom in on the map.
+* Clicking on any point on the map will recenter it at that point. 
+* If the map is zoomed in you can use the `"Data"`, `"Out 8x"` or `"Out"` buttons to zoom out.  The `"Data"` button will restore the map to the maximum extent of the dataset.
+* For this exercise select an area above Hawaii by putting in the following minimum and maximum latitude and longitude values using the latitude and longitude widgets: 
+    * `Latitudes: 35, 15`
+    * `Longitudes: -160, -140`  
+
+Then click `"Redraw the Graph"`. 
+
+![Bloom Map in N. Pacific, Sept 2018, log scale](images/ChlMap1.png)
+
+## Adjust the map scale 
+
+By default chlorophyll maps are plotted on a log scale, to better show the large variations in values from the open ocean to coastal regions.  However in regions with a more linear range of value, like in the open ocean, it makes more sense to look at the data on a linear scale.  Select 'linear' under the __"Scale" widget__  and then click '"Redraw the Graph"'. 
+
+![Bloom Map in N. Pacific, Sept 2018, default linear scale](images/map2.png)
+
+There is no difference in the map color, because the default Chl range is .03 - 30 mg/m3. Change the range to something more appropriate for this region:
+
+* In the "Graph Settings" under  "Color Bar", 
+    * for "Minimum" input `0` 
+    * for "Maximum" input `.2` 
+    * Then click the `"Redraw the Graph"` button
+    
+![Bloom Map in N. Pacific, Sept 2018, linear scale 0 - 0.2 mg/m3](images/map3.png)    
+
+You can also change the color palette. Click the dropdown next to `"Color Bar"` to see a selection of palettes. 
+Select `Rainbow2` to generate a map with less garish colors and click `"Redraw the Graph"`.
+
+![Bloom Map in N. Pacific, Sept 2018, linear scale 0 - 0.2 mg/m3, Rainbow2 palette](images/map4.png)   
+
+There are numerous color palettes to choose from, including the KT series which have designed to be perceptually uniform and to reflect the data they are representing in terms of being sequential, divergent, or cyclic (phase colormap), and to be intuitive. For example, the algae colormap is shades of green which could represent chlorophyll.Choose the `KT_algal` color palette  and click `"Redraw the Graph"`.  More info on these color can be found at https://matplotlib.org/cmocean/. 
+
+
+![Bloom Map in N. Pacific, Sept 2018, linear scale 0 - 0.2 mg/m3, KT_algal palette](images/ChlMapKT.png)
+
+## Download the data
+
+* You can download the data directly to your computer by clicking `"Download the Data or an image"` under the `"Redraw the Graph"` button. 
+
+* Alternatively, you can copy the URL in the "or view the URL" box. This URL contains the complete request of the data as you defined it. Put the URL in any browser to download the data. You can even send the URL to a colleague and they can download the data. More importantly, you can use the URL to import the data directly into analysis programs like R, Python, or Matlab. 
+
+* If you want to download a timeseries of data from this region click on `"Data Access Form"` below the Dataset Title.   The latitude and longitude ranges selected in your map will be brought over to the Data Access Form, and you can define the temporal subset of data you want. If there are multiple variables in the dataset, you can choose which ones you want to download.  

@@ -21,7 +21,6 @@ Suggested software includes a text editor like Notepad or TextEdit and the netCD
 
 Additional course materials are available at these locations:  
 
-* ERDDAP tutorial (coastwatch.pfeg.noaa.gov/projects/nb/)
 * R tutorials (coastwatch.pfeg.noaa.gov/projects/r/), 
 * R notebooks (github.com/dhr-sc/text_book
 
@@ -40,6 +39,13 @@ These course materials were developed and are distributed by the [West Coast Nod
 <button>[Data Catalog](https://coastwatch.pfeg.noaa.gov/data.html)</button> \ \ \ \ \ \ \ 
 <button>[Data Server](https://coastwatch.pfeg.noaa.gov/erddapinfo/index.html)</button> \ \ \ \ \ \ \ 
 <button>[Xtractomatic](https://coastwatch.pfeg.noaa.gov/xtracto/)</button>
+
+
+```{r, nice-fig2, echo=FALSE}
+htmltools::img(src = knitr::image_uri("images/cw_logo_notext.png"), 
+               alt = 'logo', 
+               style = 'position:absolute; top:0; right:0; padding:10px; width:100px')
+```
 
 
 
