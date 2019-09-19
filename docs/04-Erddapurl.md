@@ -218,7 +218,7 @@ ncatt_get(nc, mydata_var)
 ## [1] "C.J. Donlon, M. Martin, J.D. Stark, J. Roberts-Jones, E. Fiedler, W. Wimmer. The operational sea surface temperature and sea ice analysis (OSTIA) system. Remote Sensing Environ., 116 (2012), pp. 140u2013158 https://dx.doi.org/10.1016/j.rse.2010.10.017"
 ## 
 ## $source
-## [1] "REMSS-L2P-AMSRE, UPA-L2P-ATS_NR_2P, NAVO-L2P-AVHRR18_G, NAVO-L2P-AVHRR19_G, EUR-L2P-AVHRR_METOP_A, SEVIRI_SST-OSISAF-L3C-v1.0, REMSS_L2P-TMI, GOES13-OSISAF-L3C-v1.0"
+## [1] "AVHRR18_G-NAVO-L2P-V1.0, AVHRR19_G-NAVO-L2P-V1.0, AVHRR_SST_METOP_B-OSISAF-L2P-V1.0, VIIRS_NPP-OSPO-L2P-V2.3, AMSR2-REMSS-L2P-V07.2, GOES13-OSISAF-L3C-V1.0, SEVIRI_SST-OSISAF-L3C-V1.0, OSISAF_ICE, NCEP_ICE"
 ## 
 ## $standard_name
 ## [1] "sea_surface_foundation_temperature"

@@ -1,7 +1,7 @@
 --- 
 title: "NOAA Satellite Course: Introduction to ERDDAP"
 author: "Cara Wilson and Dale Robinson"
-#date: "2019-06-11"
+#date: "2019-07-31"
 date: "16 May 2019"
 site: bookdown::bookdown_site
 documentclass: book
